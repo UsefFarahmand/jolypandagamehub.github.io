@@ -1,9 +1,9 @@
 [
     {
-        "title": "Panda's Last Bamboo",
-        "genre": "Action / Shooter",
-        "logo": "assets/games/space-shooter.jpg",
-        "url": "Panda's Last Bamboo/index.html"
+        "title": "Panda Clicker",
+        "genre": "Casual / Idle Clicker",
+        "logo": "games/PandaClicker/assets/logo.png",
+        "url": "games/PandaClicker/index.html"
     },
     {
         "title": "Puzzle World",

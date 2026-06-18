@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jolly Panda Hub / Panda Clicker</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico" />
+
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+
+
+    <body>
+
+
+        <div id="menu">
+
+            <img src="assets/logo.png">
+
+            <div class="menu-buttons">
+
+                <button id="backHub">
+                    ⬅ Back to Hub
+                </button>
+
+
+                <button id="start">
+                    PLAY
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="game hidden">
+
+
+            <h1>🐼 Panda Clicker</h1>
+
+            <button id="exitGame">
+                ⬅ Exit
+            </button>
+
+            <div class="score">
+
+                Bamboo:
+                <span id="score">
+                    0
+                </span>
+
+            </div>
+
+
+
+            <div class="pandaBox">
+
+                <img 
+                id="panda"
+                src="assets/panda.png"
+                >
+
+
+                <div id="particles"></div>
+
+            </div>
+
+
+
+            <button id="upgrade">
+
+                Upgrade Power
+
+                <br>
+
+                Cost:
+                <span id="cost">
+                    20
+                </span>
+
+            </button>
+
+
+            <p>
+
+                Power:
+
+                <span id="power">
+                    1
+                </span>
+
+            </p>
+
+
+
+        </div>
+
+
+
+        <audio id="clickSound"
+        src="assets/click.mp3">
+        </audio>
+
+
+
+        <script src="game.js"></script>
+
+
+    </body>
+
+</html>
