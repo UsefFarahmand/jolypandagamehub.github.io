@@ -12,12 +12,14 @@
         <button id="helpBtn">
             ?
         </button>
-        
+
         <div id="game">
 
             <div id="scoreboard"></div>
 
             <div id="scores"></div>
+            
+            <div id="currentTurn"></div>
 
             <div id="topPlayers">
 
@@ -63,39 +65,52 @@
 
             </div>
 
-            <div id="currentTurn"></div>
             <div id="playerHand"></div>
 
         </div>
 
         <div id="helpModal" class="modal hidden">
 
+            <div class="modal-content tutorial-layout">
+
+                <div class="tutorial-header">
+                    <h1>Tutorials</h1>
+
+                    <button id="closeHelp" class="icon-btn close">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="tutorial-text">
+                    Play animals into the queue.
+                    When the queue reaches 5 animals:
+
+                    <ul>
+                        <li>First two animals join their owners party.</li>
+                        <li>Last animal goes to trash.</li>
+                    </ul>
+                </div>
+
+                <div id="animalGrid"></div>
+
+            </div>
+        </div>
+
+        <div id="cardModal" class="modal hidden">
+
             <div class="modal-content">
 
-                <span id="closeHelp">✕</span>
+                <div class="modal-header">
+                    <button id="cardBackBtn" class="icon-btn">
+                        ←
+                    </button>
+                </div>
 
-                <h2>How To Play</h2>
-
-                <p>
-                Play cards into the queue.
-                </p>
-
-                <p>
-                When the queue reaches 5 cards:
-                </p>
-
-                <ul>
-                <li>First two cards join their owners' party.</li>
-                <li>Last card is discarded.</li>
-                </ul>
-
-                <h3>Card Abilities</h3>
-
-                <div id="cardAbilityList"></div>
+                <div id="cardModalContent"></div>
 
             </div>
 
-            </div>
+        </div>
 
         <script type="module" src="js/main.js"></script>
 

@@ -15,6 +15,10 @@ from "./game/turnManager.js";
 import { updateUI }
 from "./ui.js";
 
+import {
+    initTutorial
+}
+from "./game/tutorial.js";
 
 const players=[
 
@@ -51,5 +55,7 @@ players.forEach(p=>{
 
 
 updateUI(gameState);
+
+initTutorial();
 
 startTurn(gameState);

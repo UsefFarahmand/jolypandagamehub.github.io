@@ -1,0 +1,86 @@
+[
+  {
+    "power": 12,
+    "name": "Lion",
+    "emoji": "🦁",
+    "description": "King of the Queue. If another Lion exists in the queue, the new Lion is sent to Trash. If a Monkey exists, it is also removed. Then Lion moves to the front of the queue.",
+    "example": "Before: Hippo > Monkey > Lion\nAfter: Lion > Hippo"
+  },
+  {
+    "power": 11,
+    "name": "Hippo",
+    "emoji": "🦛",
+    "description": "Heavy Push. Moves forward by passing all cards with power lower than 11 until it reaches a stronger card or a Zebra.",
+    "example": "Before: Lion > Zebra > Monkey > Hippo\nAfter: Lion > Zebra > Hippo > Monkey"
+  },
+  {
+    "power": 10,
+    "name": "Crocodile",
+    "emoji": "🐊",
+    "description": "Predator. Moves forward and eats all weaker cards (power < 10). Stops when it reaches Zebra or a stronger card.",
+    "example": "Before: Lion > Zebra > Monkey > Crocodile\nAfter: Lion > Zebra > Crocodile\n(Monkey is removed)"
+  },
+  {
+    "power": 9,
+    "name": "Snake",
+    "emoji": "🐍",
+    "description": "Chaos Order. Sorts the entire queue from highest power to lowest power.",
+    "example": "Before: Monkey > Lion > Zebra > Snake\nAfter: Lion > Snake > Zebra > Monkey"
+  },
+  {
+    "power": 8,
+    "name": "Giraffe",
+    "emoji": "🦒",
+    "description": "Jump Over. Moves forward exactly one position in the queue.",
+    "example": "Before: Lion > Hippo > Giraffe\nAfter: Lion > Giraffe > Hippo"
+  },
+  {
+    "power": 7,
+    "name": "Zebra",
+    "emoji": "🦓",
+    "description": "Barrier. Blocks Hippo and Crocodile from passing.",
+    "example": "Before: Lion > Zebra > Hippo\nAfter: Lion > Zebra > Hippo (Hippo cannot pass)"
+  },
+  {
+    "power": 6,
+    "name": "Seal",
+    "emoji": "🦭",
+    "description": "Reverse World. Reverses the entire queue order.",
+    "example": "Before: Lion > Hippo > Zebra > Seal\nAfter: Seal > Zebra > Hippo > Lion"
+  },
+  {
+    "power": 5,
+    "name": "Sloth Bear",
+    "emoji": "🦥",
+    "description": "Sticky. Does not move. If a Lion or Hippo passes over it, it attaches behind that card.",
+    "example": "Before: Sloth Bear > Lion\nAfter: Lion > Sloth Bear"
+  },
+  {
+    "power": 4,
+    "name": "Parrot",
+    "emoji": "🦜",
+    "description": "Remove Strongest. Removes the two strongest cards in the queue. Parrot stays.",
+    "example": "Before: Lion > Hippo > Zebra > Parrot\nAfter: Zebra > Parrot (Lion and Hippo are removed)"
+  },
+  {
+    "power": 3,
+    "name": "Kangaroo",
+    "emoji": "🦘",
+    "description": "Jump. Moves forward by jumping 1 or 2 positions depending on space.",
+    "example": "Before: Lion > Zebra > Kangaroo\nAfter (2-step jump): Kangaroo > Lion > Zebra"
+  },
+  {
+    "power": 2,
+    "name": "Monkey",
+    "emoji": "🐒",
+    "description": "Group Effect. If this is the second Monkey in the queue, it triggers a global effect that removes all Crocodiles and Hippos and moves them to the front.",
+    "example": "Before: Hippo > Lion > Monkey > Crocodile > Monkey\nAfter: Hippo > Crocodile > Lion > Monkey > Monkey"
+  },
+  {
+    "power": 1,
+    "name": "Weasel",
+    "emoji": "🦡",
+    "description": "Clean Strong. Removes the two strongest cards in the queue.",
+    "example": "Before: Lion > Hippo > Monkey > Weasel\nAfter: Monkey > Weasel (Lion and Hippo are removed)"
+  }
+]

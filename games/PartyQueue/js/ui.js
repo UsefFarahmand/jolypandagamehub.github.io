@@ -268,15 +268,3 @@ function renderScoreboard(gameState){
         }).join(" | ");
 
 }
-
-const helpBtn = document.getElementById("helpBtn");
-const helpModal = document.getElementById("helpModal");
-const closeHelp = document.getElementById("closeHelp");
-
-helpBtn.addEventListener("click", () => {
-    helpModal.classList.remove("hidden");
-});
-
-closeHelp.addEventListener("click", () => {
-    helpModal.classList.add("hidden");
-});
