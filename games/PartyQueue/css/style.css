@@ -12,7 +12,7 @@
     --p4: #a855f7;
 
     /* Base colors */
-    --bg-main: #0b1220;
+    --bg-main: #0a1f0f;
     --bg-panel: rgba(255, 255, 255, 0.06);
     --bg-card: linear-gradient(145deg, #1f2937, #111827);
 
@@ -88,11 +88,11 @@ body {
 
     display:grid;
 
-    grid-template-columns:300px 1fr 300px;
+    grid-template-columns: clamp(120px, 22vw, 300px) 1fr clamp(120px, 22vw, 300px);
 
     align-items:center;
 
-    height:240px;
+    height: clamp(80px, 18vw, 240px);
 
     flex-shrink:0;
 }
@@ -112,12 +112,12 @@ body {
 
     height: 100%;
 
-    padding-left: 20px;
+    padding-left: clamp(8px, 1.5vw, 20px);
 }
 
 .turn-label {
 
-    font-size: 28px;
+    font-size: clamp(14px, 2.2vw, 28px);
 
     font-weight: 700;
 
@@ -137,7 +137,7 @@ body {
 
 .round-label {
 
-    font-size: 18px;
+    font-size: clamp(11px, 1.4vw, 18px);
 
     color: var(--text-main);
 }
@@ -195,20 +195,20 @@ body {
 
     gap: 12px;
 
-    padding-right: 20px;
+    padding-right: clamp(8px, 1.5vw, 20px);
 }
 
 .top-btn {
 
-    width: 50px;
+    width: clamp(34px, 3.5vw, 50px);
 
-    height: 50px;
+    height: clamp(34px, 3.5vw, 50px);
 
     border-radius: 12px;
 
     border: 1px solid var(--border);
 
-    background: #111827;
+    background: #0d1a0d;
 
     color: white;
 
@@ -227,7 +227,7 @@ body {
 
 .top-btn:hover {
 
-    background: #1f2937;
+    background: #132213;
 
     transform: translateY(-2px);
 
@@ -354,9 +354,9 @@ body {
     display: grid;
 
     grid-template-columns:
-        400px
+        clamp(180px, 22vw, 400px)
         1fr
-        400px;
+        clamp(180px, 22vw, 400px);
 
     gap: 24px;
 
@@ -825,9 +825,9 @@ body {
 .card,
 .card-info {
 
-    width: 90px;
+    width: clamp(60px, 6.5vw, 90px);
 
-    height: 120px;
+    height: clamp(85px, 9.2vw, 120px);
 
 
     border-radius: var(--radius-md);
@@ -856,6 +856,70 @@ body {
     transition:
         transform .2s ease,
         box-shadow .2s ease;
+
+    container-type: size;
+}
+
+/* Tutorial card-info: same layout as game card but no owner badge */
+.card-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    overflow: hidden;
+    /* bigger in the tutorial grid */
+    width: clamp(80px, 10vw, 120px);
+    height: clamp(110px, 14vw, 165px);
+}
+
+.card-info .tutorial-card-emoji {
+    font-size: unset;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 12%;
+    font-size: clamp(1.2em, 28cqw, 2.6em);
+    line-height: 1;
+}
+
+.card-info .card-image {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+}
+
+.card-info .tutorial-card-footer {
+    width: 100%;
+    background: rgba(0,0,0,0.38);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3% 7%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.card-info .tutorial-card-name {
+    font-size: clamp(7px, 10cqw, 11px);
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.card-info .tutorial-card-power {
+    font-size: clamp(8px, 12cqw, 14px);
+    font-weight: 800;
+    color: #fbbf24;
+    flex-shrink: 0;
+    margin-left: 4%;
+    line-height: 1.2;
 }
 
 
@@ -896,20 +960,21 @@ body {
 
 .card-owner-badge {
     position: absolute;
-    top: 6px;
-    left: 6px;
-    font-size: 9px;
+    top: 5%;
+    left: 6%;
+    font-size: clamp(7px, 1.1cqw, 10px);
     font-weight: 700;
-    padding: 2px 6px;
+    padding: 1px 5px;
     border-radius: 20px;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.5);
     color: #fff;
-    letter-spacing: 0.3px;
-    max-width: 70%;
+    letter-spacing: 0.2px;
+    max-width: 75%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     z-index: 2;
+    line-height: 1.6;
 }
 
 .card-visual {
@@ -918,51 +983,50 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-top: 24px;
+    padding-top: 28%;
+    min-height: 0;
 }
 
 .card-emoji {
-    font-size: 2.2em;
+    font-size: clamp(1em, 30cqw, 2.4em);
     line-height: 1;
 }
 
 .card-image {
-    width: 64px;
-    height: 64px;
+    width: 65%;
+    height: 65%;
     object-fit: contain;
 }
 
 .card-footer {
     width: 100%;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.38);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 8px;
+    padding: 3% 7%;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .card-name {
-    font-size: 10px;
+    font-size: clamp(7px, 10cqw, 11px);
     font-weight: 600;
     color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .card-power {
-    font-size: 12px;
+    font-size: clamp(8px, 12cqw, 13px);
     font-weight: 800;
     color: #fbbf24;
     flex-shrink: 0;
-    margin-left: 4px;
+    margin-left: 4%;
+    line-height: 1.2;
 }
-
-#playerHand .card-emoji { font-size: 3em; }
-#playerHand .card-image { width: 80px; height: 80px; }
-#playerHand .card-name  { font-size: 12px; }
-#playerHand .card-power { font-size: 14px; }
 
 /* Player card themes */
 
@@ -1038,7 +1102,7 @@ body {
 
     display: flex;
 
-    gap: 30px;
+    gap: clamp(6px, 2vw, 30px);
 }
 
 
@@ -1050,21 +1114,18 @@ body {
 
 #queue .card {
 
+    width: clamp(80px, 10vw, 150px);
 
-    width:150px;
-
-    height:215px;
-
-    font-size:30px;
+    height: clamp(115px, 14.5vw, 215px);
 
 }
 
 
 .queue-slot {
 
-    width:150px;
+    width: clamp(80px, 10vw, 150px);
 
-    height:215px;
+    height: clamp(115px, 14.5vw, 215px);
 
 
     border:
@@ -1121,7 +1182,7 @@ body {
 
     align-items:center;
 
-    gap:25px;
+    gap: clamp(8px, 2vw, 25px);
 
     margin-top:20px;
 
@@ -1129,14 +1190,11 @@ body {
 
 #playerHand {
 
-
     display:flex;
-
 
     justify-content:center;
 
-
-    gap:16px;
+    gap: clamp(4px, 1.2vw, 16px);
 
 
     flex-wrap:wrap;
@@ -1146,12 +1204,9 @@ body {
 
 #playerHand .card {
 
+    width: clamp(80px, 9vw, 120px);
 
-    width:120px;
-
-    height:165px;
-
-    font-size:16px;
+    height: clamp(112px, 13vw, 165px);
 
 }
 
@@ -1178,10 +1233,9 @@ body {
 
 .deck-back {
 
+    width: clamp(80px, 9vw, 120px);
 
-    width:120px;
-
-    height:165px;
+    height: clamp(112px, 13vw, 165px);
 
 
     border-radius:12px;
@@ -1321,10 +1375,9 @@ body {
 
 .card-back {
 
+    width: clamp(32px, 5.5vw, 85px);
 
-    width:85px;
-
-    height:120px;
+    height: clamp(45px, 8vw, 120px);
 
 
     border-radius:8px;
@@ -1495,10 +1548,10 @@ body {
 
 .modal-content {
 
-    width: 700px;
+    width: min(700px, 92vw);
 
 
-    max-width: 90%;
+    max-width: 92%;
 
 
     padding: 24px;
@@ -1507,7 +1560,7 @@ body {
     border-radius: var(--radius-md);
 
 
-    max-height: 80vh;
+    max-height: 88vh;
 
 
     overflow-y: auto;
@@ -1524,7 +1577,7 @@ body {
 
 
     background:
-        #111827;
+        #0d1a0d;
 
 
     box-shadow:
@@ -1634,12 +1687,12 @@ body {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns: repeat(auto-fill, minmax(clamp(80px,10vw,120px), 1fr));
 
-    gap: 16px;
+    gap: 14px;
 
-    align-items: center;
+    align-items: start;
+    justify-items: center;
 }
 
 /* ==========================================================
@@ -1699,6 +1752,30 @@ body {
     font-size: 26px;
 
     color: #ffffff;
+}
+
+.tutorial-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    background: rgba(255,255,255,.15);
+
+    margin: 24px 0 16px;
+}
+
+.animal-guide-title {
+
+    text-align: center;
+
+    margin: 0 0 20px;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    color: var(--text-main);
 }
 
 
@@ -1799,7 +1876,7 @@ body {
 
 
     background:
-        #111827;
+        #0d1a0d;
 
 
     border:
@@ -1895,7 +1972,7 @@ body {
 
 
     background:
-        #111827;
+        #0d1a0d;
 
 
     color: white;
@@ -2110,7 +2187,7 @@ body {
     border:1px solid var(--border);
 
 
-    background:#111827;
+    background:#0d1a0d;
 
 
     color:white;
@@ -2131,7 +2208,7 @@ body {
 .kangaroo-buttons button:hover {
 
 
-    background:#1f2937;
+    background:#132213;
 
 
     transform:translateY(-3px);
@@ -2157,548 +2234,9 @@ body {
 ========================================================== */
 
 
-@media (max-width: 900px) {
 
 
-    /* -----------------------------
-       Main layout
-    ------------------------------ */
 
-
-    #pageLayout {
-
-        display: block;
-
-        padding: 10px;
-    }
-
-
-    #leftSidebar {
-
-        display: none;
-
-        height: auto;
-    }
-
-
-    #gameColumn {
-
-        min-height: auto;
-    }
-
-
-    #gameLayout {
-
-        display: flex;
-
-        flex-direction: column;
-
-
-        gap: 12px;
-
-        min-height: auto;
-    }
-
-
-
-    #centerArea {
-
-        display: contents;
-    }
-
-
-
-    /* -----------------------------
-       Mobile navigation
-    ------------------------------ */
-
-
-    #mobileMenu {
-
-
-        display: flex;
-
-
-        justify-content: center;
-
-
-        gap: 10px;
-
-
-        margin-top: 10px;
-    }
-
-
-
-    #mobileMenu button {
-
-
-        width: 42px;
-
-
-        height: 42px;
-
-
-        border-radius: var(--radius-sm);
-
-
-        border:
-            1px solid var(--border);
-
-
-        background:
-            #111827;
-
-
-        color:
-            white;
-
-
-        cursor: pointer;
-    }
-
-
-
-
-    #mobileTabs {
-
-
-        display: flex;
-
-
-        gap: 8px;
-
-
-        justify-content: center;
-
-
-        order: 2;
-    }
-
-
-
-    #partyTab,
-    #trashTab {
-
-
-        flex: 1;
-
-
-        padding: 10px;
-
-
-        border:
-            1px solid var(--border);
-
-
-        border-radius:
-            var(--radius-sm);
-
-
-        background:
-            #111827;
-
-
-        color:
-            white;
-
-
-        cursor:
-            pointer;
-
-
-        transition:
-            .2s;
-    }
-
-
-
-    #partyTab:hover,
-    #trashTab:hover {
-
-
-        background:
-            #1f2937;
-
-    }
-
-
-
-
-    #partyTab.active,
-    #trashTab.active {
-
-
-        border-color:
-            var(--accent);
-
-
-        background:
-            rgba(189,93,56,.2);
-
-    }
-
-    /* -----------------------------
-       Game areas order
-    ------------------------------ */
-
-
-    #queueArea {
-
-        order: 1;
-
-        justify-content: center;
-    }
-
-
-
-    #partyArea,
-    #trashArea {
-
-
-        display: none;
-
-
-        position: fixed;
-
-
-        top: 20px;
-
-        left: 20px;
-
-        right: 20px;
-
-        bottom: 20px;
-
-
-
-        z-index: 3000;
-
-
-        /*
-          Keep original glass style
-        */
-
-        background:
-            var(--bg-panel);
-
-
-        backdrop-filter:
-            var(--blur);
-
-
-        border-radius:
-            var(--radius-lg);
-
-
-        padding:
-            16px;
-
-
-
-        box-shadow:
-            0 20px 60px rgba(0,0,0,.6);
-
-
-
-        overflow-y:
-            auto;
-
-    }
-
-
-
-
-    /*
-       Popup open state
-    */
-
-    #partyArea.mobile-open,
-    #trashArea.mobile-open {
-
-
-        display:flex;
-
-
-        flex-direction:column;
-
-    }
-
-
-
-
-    body.popup-open {
-
-
-        overflow:hidden;
-
-    }
-
-
-
-    #partyArea::before,
-    #trashArea::before {
-
-
-        content: "×";
-
-
-        position: absolute;
-
-
-        top: 10px;
-
-
-        right: 15px;
-
-
-        font-size: 28px;
-
-
-        color:white;
-
-
-        cursor:pointer;
-    }
-
-
-
-    /* Prevent background overflow */
-
-    body.popup-open {
-
-        overflow: hidden;
-    }
-
-
-
-    #playerHand {
-
-
-        order: 4;
-
-
-        gap: 6px;
-    }
-
-    #handArea {
-
-        gap:10px;
-
-    }
-
-
-    #playerHand .card,
-    .deck-back {
-
-
-        width:70px;
-
-        height:100px;
-
-    }
-
-
-
-    #deckCount {
-
-        font-size:22px;
-
-    }
-
-
-    #otherPlayers {
-
-
-        gap:10px;
-
-    }
-
-
-
-    .card-back {
-
-
-        width:28px;
-
-        height:45px;
-
-    }
-
-
-    .card-back::after {
-
-
-        font-size:14px;
-
-    }
-
-
-    /* -----------------------------
-       Queue / cards
-    ------------------------------ */
-
-
-    #queue,
-    #queueSlots {
-
-
-        display:flex;
-
-
-        flex-wrap:nowrap;
-
-
-        overflow-x:auto;
-
-
-        justify-content:flex-start;
-
-
-        width:100%;
-
-
-        gap:8px;
-
-
-        scrollbar-width:none;
-
-    }
-
-
-    #queue::-webkit-scrollbar,
-    #queueSlots::-webkit-scrollbar {
-
-
-        display:none;
-
-    }
-
-
-
-
-
-    #queue .card,
-    .queue-slot {
-
-
-        flex:
-            0 0 auto;
-
-
-        width:60px;
-
-
-        height:85px;
-
-    }
-
-    .card {
-
-
-        width: 60px;
-
-
-        height: 85px;
-
-
-        font-size: 11px;
-    }
-
-
-
-
-    #partyCards .card,
-    #trashCards .card {
-
-
-        width: 40px;
-
-
-        height: 55px;
-
-
-        font-size: 8px;
-    }
-
-
-
-
-    /* -----------------------------
-       Board
-    ------------------------------ */
-
-
-    #board {
-
-
-        width:100%;
-
-
-        overflow-x:auto;
-
-
-        justify-content:flex-start;
-
-
-        gap:8px;
-    }
-
-
-
-    /* -----------------------------
-       Top bar
-    ------------------------------ */
-
-
-    #topBar {
-
-
-        position: sticky;
-
-
-        top: 0;
-
-
-        z-index: 10;
-
-
-        margin-bottom: 12px;
-
-
-        background:
-            var(--bg-main);
-    }
-
-
-
-
-    /* -----------------------------
-       Animal grid
-    ------------------------------ */
-
-
-    #animalGrid {
-
-
-        grid-template-columns:
-            repeat(
-                auto-fit,
-                minmax(140px, 1fr)
-            );
-
-
-        gap:12px;
-
-    }
-
-
-    #gameTitle img {
-
-        width:180px;
-
-    }
-}
 
 
 /* ==========================================================
@@ -2708,16 +2246,418 @@ body {
 ========================================================== */
 
 
-@media (max-width: 500px) {
-
-    .card {
 
 
-        width: 55px;
 
 
-        height: 80px;
-    }
 
+/* ============================================================
+   MOBILE-ONLY BUTTONS — hidden on desktop
+============================================================ */
+
+.mobile-only-btn {
+    display: none;
 }
 
+/* ============================================================
+   TABLET  (601px – 1024px)
+============================================================ */
+
+@media (max-width: 1024px) and (min-width: 601px) {
+
+    #pageLayout {
+        grid-template-columns: 220px 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+
+    #leftSidebar {
+        width: 220px;
+    }
+
+    #gameLayout {
+        grid-template-columns: clamp(160px, 20vw, 260px) 1fr clamp(160px, 20vw, 260px);
+        gap: 14px;
+    }
+
+    #topBarContent {
+        height: clamp(70px, 12vw, 140px);
+        grid-template-columns: clamp(100px, 18vw, 220px) 1fr clamp(100px, 18vw, 220px);
+    }
+
+    .turn-label  { font-size: clamp(13px, 2vw, 22px); }
+    .round-label { font-size: clamp(11px, 1.6vw, 16px); }
+
+    #queue .card,
+    .queue-slot {
+        width:  clamp(70px, 8.5vw, 120px);
+        height: clamp(100px, 12vw, 170px);
+    }
+
+    #playerHand .card,
+    .deck-back {
+        width:  clamp(70px, 8vw, 110px);
+        height: clamp(100px, 11.5vw, 155px);
+    }
+
+    #queue,
+    #queueSlots { gap: clamp(8px, 1.5vw, 20px); }
+
+    #partyCards .card,
+    #trashCards .card {
+        width:  clamp(50px, 6vw, 80px);
+        height: clamp(70px, 8.5vw, 110px);
+    }
+
+    #animalGrid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 12px;
+    }
+}
+
+/* ============================================================
+   MOBILE  (≤ 600px)
+============================================================ */
+
+@media (max-width: 600px) {
+
+    /* ── Show mobile-only buttons ── */
+    .mobile-only-btn { display: flex; }
+
+    /* ── Layout ── */
+    #pageLayout {
+        display: block;
+        padding: 0;
+    }
+
+    #leftSidebar { display: none; }
+
+    #gameColumn {
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    #topBar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--bg-main);
+        margin-bottom: 0;
+    }
+
+    #topBarContent {
+        height: clamp(60px, 16vw, 90px);
+        grid-template-columns: 1fr auto 1fr;
+        padding: 0 8px;
+    }
+
+    /* Bigger logo on mobile */
+    #topCenter img {
+        height: 100%;
+        max-height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .turn-label  { font-size: clamp(10px, 3vw, 15px); }
+    .round-label { font-size: clamp(9px, 2.5vw, 13px); }
+    .turn-divider { width: 40px; margin: 3px 0; }
+
+    .top-btn {
+        width:  clamp(28px, 8vw, 38px);
+        height: clamp(28px, 8vw, 38px);
+        font-size: 13px;
+    }
+
+    #topRight { gap: 5px; }
+
+    /* ── gameLayout ── */
+    #gameLayout {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 0;
+        min-height: 0;
+        padding-bottom: 150px;
+    }
+
+    /* ── mobileTabs: above queue ── */
+    #mobileTabs {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        padding: 8px 10px 4px;
+        order: 1;
+    }
+
+    #partyTab, #trashTab {
+        flex: 1;
+        padding: 7px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        background: #0d1a0d;
+        color: white;
+        cursor: pointer;
+        transition: .2s;
+        font-size: 13px;
+    }
+
+    #partyTab:hover, #trashTab:hover { background: #132213; }
+
+    #partyTab.active, #trashTab.active {
+        border-color: var(--accent);
+        background: rgba(189,93,56,.2);
+    }
+
+    /* ── Party / Trash popup ── */
+    #partyArea, #trashArea {
+        display: none;
+        position: fixed;
+        top: 20px; left: 12px; right: 12px; bottom: 20px;
+        z-index: 3000;
+        background: var(--bg-panel);
+        backdrop-filter: var(--blur);
+        border-radius: var(--radius-lg);
+        padding: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,.6);
+        overflow-y: auto;
+    }
+
+    #partyArea.mobile-open, #trashArea.mobile-open {
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.popup-open { overflow: hidden; }
+
+    #partyArea::before, #trashArea::before {
+        content: "×";
+        position: absolute;
+        top: 10px; right: 15px;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* ── centerArea: opponents + queue ── */
+    #centerArea {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        order: 2;
+        padding: 6px 0 0;
+        min-height: 0;
+    }
+
+    /* ── Opponents: vertical stack ── */
+    #otherPlayers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    #topPlayer, #leftPlayer, #rightPlayer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+    }
+
+    #sidePlayers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .player-label {
+        font-size: 11px;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    .other-hand { gap: 3px; }
+
+    .card-back {
+        width:  clamp(18px, 5vw, 28px);
+        height: clamp(26px, 7vw, 40px);
+    }
+
+    /* ── Queue: centered, below tabs ── */
+    #queueArea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        order: 2;
+    }
+
+    #queue, #queueSlots {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+        scrollbar-width: none;
+        padding: 4px 8px;
+        box-sizing: border-box;
+    }
+
+    #queue::-webkit-scrollbar,
+    #queueSlots::-webkit-scrollbar { display: none; }
+
+    #queue .card, .queue-slot {
+        flex: 0 0 auto;
+        width:  clamp(52px, 14vw, 80px);
+        height: clamp(74px, 20vw, 114px);
+    }
+
+    /* ── Hand: fixed bottom with more padding ── */
+    #handArea {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: var(--bg-main);
+        border-top: 1px solid var(--border);
+        padding: 12px 10px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(6px, 2vw, 14px);
+        box-sizing: border-box;
+    }
+
+    #playerHand {
+        display: flex;
+        justify-content: center;
+        gap: clamp(4px, 1.5vw, 8px);
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    #playerHand::-webkit-scrollbar { display: none; }
+
+    #playerHand .card {
+        flex: 0 0 auto;
+        width:  clamp(56px, 15vw, 80px);
+        height: clamp(80px, 21vw, 114px);
+    }
+
+    #deckStack { flex-shrink: 0; }
+
+    .deck-back {
+        width:  clamp(56px, 15vw, 80px);
+        height: clamp(80px, 21vw, 114px);
+    }
+
+    #deckCount { font-size: clamp(16px, 5vw, 26px); }
+
+    /* ── General card ── */
+    .card {
+        width:  clamp(52px, 14vw, 80px);
+        height: clamp(74px, 20vw, 114px);
+    }
+
+    #partyCards .card, #trashCards .card {
+        width:  42px;
+        height: 58px;
+    }
+
+    /* ── Modal: fixed height for log ── */
+    .modal-content {
+        width: min(700px, 92vw);
+        max-width: 92%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    #logModal .modal-content {
+        max-height: 70vh;
+    }
+
+    #mobileLogContent {
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+
+    /* ── Leaderboard modal content ── */
+    #mobileLeaderboardContent {
+        min-height: 80px;
+    }
+
+    #mobileLeaderboardContent .leaderboard-row {
+        display: grid;
+        grid-template-columns: 1fr 60px;
+        gap: 8px;
+        padding: 6px 0;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Board ── */
+    #board {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    /* ── Tutorial grid ── */
+    #animalGrid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+    }
+
+    .card-info {
+        width: clamp(75px, 22vw, 100px) !important;
+        height: clamp(105px, 30vw, 140px) !important;
+    }
+
+    #gameTitle img { width: 150px; }
+}
+
+/* ============================================================
+   VERY SMALL  (≤ 380px)
+============================================================ */
+
+@media (max-width: 380px) {
+
+    #topBarContent {
+        height: 56px;
+        grid-template-columns: 70px 1fr 70px;
+    }
+
+    .turn-label  { font-size: 9px; }
+    .round-label { font-size: 8px; }
+    .turn-divider { display: none; }
+
+    .top-btn { width: 26px; height: 26px; font-size: 11px; }
+    #topRight { gap: 3px; }
+
+    #gameLayout { padding-bottom: 130px; }
+
+    #playerHand .card, .deck-back {
+        width:  clamp(48px, 18vw, 64px);
+        height: clamp(68px, 25vw, 90px);
+    }
+
+    #queue .card, .queue-slot {
+        width:  clamp(44px, 16vw, 60px);
+        height: clamp(62px, 22vw, 84px);
+    }
+
+    .card { width: 46px; height: 64px; }
+}

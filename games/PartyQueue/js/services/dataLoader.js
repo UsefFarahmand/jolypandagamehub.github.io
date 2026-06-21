@@ -9,12 +9,12 @@ export async function loadCardData() {
 
     const CARDS = Object.fromEntries(
         cardInfo.map(card => [
-            parseInt(card.power),
+            card.power,
             {
                 id:     card.power,
                 name:   card.name,
                 animal: card.emoji,
-                image:  card.image,
+                image:  card.image || "",
                 power:  card.power,
             }
         ])
@@ -23,7 +23,7 @@ export async function loadCardData() {
     const CARD_IDS = Object.fromEntries(
         cardInfo.map(card => [
             card.name.toUpperCase().replace(/ /g, "_"),
-            card.id
+            card.power
         ])
     );
 

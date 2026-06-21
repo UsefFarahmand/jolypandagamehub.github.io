@@ -91,17 +91,15 @@ function renderTutorialCards(cards){
         div.className =
             "card-info";
 
+        const visual = card.image
+            ? `<img class="card-image" src="${card.image}" alt="${card.name}" />`
+            : `<div class="tutorial-card-emoji">${card.emoji}</div>`;
+
         div.innerHTML = `
-            <div class="tutorial-card-emoji">
-                ${card.emoji}
-            </div>
-
-            <div class="tutorial-card-name">
-                ${card.name}
-            </div>
-
-            <div class="tutorial-card-power">
-                ${card.power}
+            ${visual}
+            <div class="tutorial-card-footer">
+                <div class="tutorial-card-name">${card.name}</div>
+                <div class="tutorial-card-power">${card.power}</div>
             </div>
         `;
 
@@ -123,10 +121,14 @@ function openCardInfo(card){
 
     const [before, after] = card.example.split("\n");
 
+    const detailVisual = card.image
+        ? `<img class="detail-image" src="${card.image}" alt="${card.name}" style="width:100px;height:100px;object-fit:contain;margin-bottom:10px;" />`
+        : `<div class="detail-emoji">${card.emoji}</div>`;
+
     document.getElementById("cardModalContent").innerHTML = `
         <div class="tutorial-card-detail">
 
-            <div class="detail-emoji">${card.emoji}</div>
+            ${detailVisual}
             <h2>${card.name}</h2>
 
             <div class="power-badge">
