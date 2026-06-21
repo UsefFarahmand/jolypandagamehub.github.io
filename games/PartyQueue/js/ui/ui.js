@@ -23,6 +23,8 @@ export function updateUI(gameState){
 
     renderHand(gameState);
 
+    renderOtherPlayers(gameState);
+
     renderParty(gameState);
 
     renderTrash(gameState);
@@ -122,6 +124,93 @@ function renderHand(gameState){
 
 }
 
+function renderOtherPlayers(gameState){
+
+
+    const top =
+        document.getElementById("topPlayer");
+
+
+    const left =
+        document.getElementById("leftPlayer");
+
+
+    const right =
+        document.getElementById("rightPlayer");
+
+
+
+    top.innerHTML="";
+    left.innerHTML="";
+    right.innerHTML="";
+
+
+
+    const others =
+        gameState.players.filter(
+            p=>p.id !== "p1"
+        );
+
+
+
+    const positions=[
+        top,
+        left,
+        right
+    ];
+
+
+
+    others.forEach((player,i)=>{
+
+
+        const box =
+            positions[i];
+
+
+
+        const title =
+        `
+        <div class="player-label">
+            ${player.name}
+        </div>
+        `;
+
+
+
+        let cards="";
+
+
+
+        player.hand.forEach(()=>{
+
+
+            cards +=
+            `
+            <div 
+                class="card-back"
+                data-player="${player.id}">
+            </div>
+            `;
+
+
+        });
+
+
+
+        box.innerHTML =
+        title +
+        `
+        <div class="other-hand">
+            ${cards}
+        </div>
+        `;
+
+
+    });
+
+
+}
 
 
 function createCard(card){

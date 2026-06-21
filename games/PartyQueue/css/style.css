@@ -763,7 +763,188 @@ body {
 
 }
 
+/* ==========================================================
+   OTHER PLAYER HANDS
+========================================================== */
 
+
+#otherPlayers {
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:20px;
+
+
+}
+
+
+
+#topPlayer {
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+
+#sidePlayers {
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    width:100%;
+
+}
+
+
+
+.other-hand {
+
+
+    display:flex;
+
+    gap:6px;
+
+}
+
+
+
+.card-back {
+
+
+    width:45px;
+
+    height:65px;
+
+
+    border-radius:8px;
+
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+
+    box-shadow:
+    0 5px 12px rgba(0,0,0,.4);
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+}
+
+.card-back[data-player="p1"] {
+
+    background:
+    linear-gradient(
+        145deg,
+        var(--p1),
+        #111827
+    );
+
+}
+
+
+
+.card-back[data-player="p2"] {
+
+    background:
+    linear-gradient(
+        145deg,
+        var(--p2),
+        #111827
+    );
+
+}
+
+
+
+.card-back[data-player="p3"] {
+
+    background:
+    linear-gradient(
+        145deg,
+        var(--p3),
+        #111827
+    );
+
+}
+
+
+
+.card-back[data-player="p4"] {
+
+    background:
+    linear-gradient(
+        145deg,
+        var(--p4),
+        #111827
+    );
+
+}
+
+
+
+.card-back::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background-image:
+    url("../assets/logo.png");
+
+
+    background-repeat:no-repeat;
+
+
+    background-position:center;
+
+
+    background-size:55%;
+
+
+    opacity:.85;
+
+
+}
+
+
+
+.player-label {
+
+
+    margin-bottom:8px;
+
+
+    font-size:14px;
+
+
+    color:var(--text-muted);
+
+
+}
 
 
 /* ==========================================================
@@ -1801,6 +1982,31 @@ body {
     }
 
 
+    #otherPlayers {
+
+
+        gap:10px;
+
+    }
+
+
+
+    .card-back {
+
+
+        width:28px;
+
+        height:45px;
+
+    }
+
+
+    .card-back::after {
+
+
+        font-size:14px;
+
+    }
 
 
     /* -----------------------------
