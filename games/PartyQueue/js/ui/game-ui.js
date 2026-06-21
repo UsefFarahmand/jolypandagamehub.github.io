@@ -225,21 +225,16 @@ function createCard(card){
 
     div.dataset.player = card.owner.id;
 
+    const visual = card.image
+        ? `<img class="card-image" src="${card.image}" alt="${card.name}" />`
+        : `<div class="card-emoji">${card.animal}</div>`;
+
     div.innerHTML = `
-        <div class="animal">
-            ${card.animal}
-        </div>
-
-        <div class="name">
-            ${card.name}
-        </div>
-
-        <div class="power">
-            ${card.power}
-        </div>
-
-        <div class="owner">
-            ${card.owner.name}
+        <div class="card-owner-badge">${card.owner.name}</div>
+        <div class="card-visual">${visual}</div>
+        <div class="card-footer">
+            <div class="card-name">${card.name}</div>
+            <div class="card-power">${card.power}</div>
         </div>
     `;
 

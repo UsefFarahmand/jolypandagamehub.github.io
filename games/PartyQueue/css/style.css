@@ -881,6 +881,89 @@ body {
 }
 
 
+
+/* ── Card new layout ── */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    overflow: hidden;
+}
+
+.card-owner-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    letter-spacing: 0.3px;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.card-visual {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 24px;
+}
+
+.card-emoji {
+    font-size: 2.2em;
+    line-height: 1;
+}
+
+.card-image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.card-footer {
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.card-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-power {
+    font-size: 12px;
+    font-weight: 800;
+    color: #fbbf24;
+    flex-shrink: 0;
+    margin-left: 4px;
+}
+
+#playerHand .card-emoji { font-size: 3em; }
+#playerHand .card-image { width: 80px; height: 80px; }
+#playerHand .card-name  { font-size: 12px; }
+#playerHand .card-power { font-size: 14px; }
+
 /* Player card themes */
 
 .card[data-player="p1"] {
@@ -1072,14 +1155,7 @@ body {
 
 }
 
-.owner {
-
-    font-size: 10px;
-
-    opacity: .7;
-
-    margin-top: 4px;
-}
+/* .owner removed - replaced by .card-owner-badge */
 
 /* =========================
    Deck Stack
