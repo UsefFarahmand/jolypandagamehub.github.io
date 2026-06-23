@@ -1107,18 +1107,18 @@ body {
 
 #queue .card {
 
-    width: clamp(80px, 10vw, 150px);
+    width: clamp(68px, 8vw, 110px);
 
-    height: clamp(115px, 14.5vw, 215px);
+    height: clamp(96px, 11.5vw, 155px);
 
 }
 
 
 .queue-slot {
 
-    width: clamp(80px, 10vw, 150px);
+    width: clamp(68px, 8vw, 110px);
 
-    height: clamp(115px, 14.5vw, 215px);
+    height: clamp(96px, 11.5vw, 155px);
 
 
     border:
@@ -1174,7 +1174,11 @@ body {
 
     gap: clamp(8px, 2vw, 25px);
 
-    margin-top:20px;
+    margin-top:8px;
+
+    flex-shrink: 0;
+
+    flex-wrap: wrap;
 
 }
 
@@ -1194,9 +1198,9 @@ body {
 
 #playerHand .card {
 
-    width: clamp(80px, 9vw, 120px);
+    width: clamp(68px, 8vw, 100px);
 
-    height: clamp(112px, 13vw, 165px);
+    height: clamp(96px, 11.5vw, 140px);
 
 }
 
@@ -1223,9 +1227,9 @@ body {
 
 .deck-back {
 
-    width: clamp(80px, 9vw, 120px);
+    width: clamp(68px, 8vw, 100px);
 
-    height: clamp(112px, 13vw, 165px);
+    height: clamp(96px, 11.5vw, 140px);
 
 
     border-radius:12px;
@@ -2262,13 +2266,13 @@ body {
     .round-label { font-size: clamp(11px, 1.6vw, 16px); }
 
     #queue .card, .queue-slot {
-        width:  clamp(70px, 8.5vw, 120px);
-        height: clamp(100px, 12vw, 170px);
+        width:  clamp(58px, 7.5vw, 96px);
+        height: clamp(82px, 10.5vw, 135px);
     }
 
     #playerHand .card, .deck-back {
-        width:  clamp(70px, 8vw, 110px);
-        height: clamp(100px, 11.5vw, 155px);
+        width:  clamp(58px, 7vw, 90px);
+        height: clamp(82px, 10vw, 126px);
     }
 
     #queue { gap: clamp(8px, 1.5vw, 20px); }
@@ -2518,7 +2522,7 @@ body {
         display: flex !important;
         flex-direction: column;
         flex: 1; gap: 0;
-        padding-bottom: 160px;
+        padding-bottom: 120px;
     }
 
     /* ── ORDER: leaderboard → otherPlayers → tabs → queue → hand ── */
@@ -2657,7 +2661,7 @@ body {
         z-index: 50;
         background: var(--bg-main);
         border-top: 1px solid var(--border);
-        padding: 12px 12px 28px !important;
+        padding: 8px 12px 16px !important;
         display: flex; justify-content: center;
         align-items: center; gap: clamp(6px, 2vw, 14px);
         box-sizing: border-box;
@@ -2672,14 +2676,14 @@ body {
 
     #playerHand .card {
         flex: 0 0 auto;
-        width:  clamp(56px, 15vw, 80px);
-        height: clamp(80px, 21vw, 114px);
+        width:  clamp(50px, 13vw, 70px);
+        height: clamp(70px, 18vw, 98px);
     }
 
     #deckStack { flex-shrink: 0; }
     .deck-back {
-        width:  clamp(56px, 15vw, 80px);
-        height: clamp(80px, 21vw, 114px);
+        width:  clamp(50px, 13vw, 70px);
+        height: clamp(70px, 18vw, 98px);
     }
     #deckCount { font-size: clamp(16px, 5vw, 26px); }
 
@@ -2731,11 +2735,11 @@ body {
     .top-btn { width: 26px !important; height: 26px !important; font-size: 11px; }
     #topRight { gap: 3px !important; }
 
-    #gameLayout { padding-bottom: 130px; }
+    #gameLayout { padding-bottom: 100px; }
 
     #playerHand .card, .deck-back {
-        width:  clamp(48px, 18vw, 64px);
-        height: clamp(68px, 25vw, 90px);
+        width:  clamp(44px, 16vw, 58px);
+        height: clamp(62px, 22vw, 82px);
     }
 
     #queue .card, .queue-slot {

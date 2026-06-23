@@ -4,7 +4,7 @@ async function getIconConfig() {
 
     if (_iconConfig) return _iconConfig;
 
-    const response = await fetch("../../data/config.json");
+    const response = await fetch("./data/config.json");
 
     if (!response.ok) {
         throw new Error(`Failed to load config.json (${response.status})`);
