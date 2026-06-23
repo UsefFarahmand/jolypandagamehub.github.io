@@ -1,5 +1,11 @@
 [
     {
+        "title": "Wild Guest List",
+        "genre": "Casual Card",
+        "logo": "games/PartyQueue/assets/img/Logo-splash.png",
+        "url": "games/PartyQueue/index.html"
+    },
+    {
         "title": "Panda Clicker",
         "genre": "Casual / Idle Clicker",
         "logo": "games/PandaClicker/assets/logo.png",
