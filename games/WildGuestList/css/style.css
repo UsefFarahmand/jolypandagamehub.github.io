@@ -199,35 +199,28 @@ body {
 }
 
 .top-btn {
-
     width: clamp(34px, 3.5vw, 50px);
-
     height: clamp(34px, 3.5vw, 50px);
 
     border-radius: 12px;
+    border: none;
 
-    border: 1px solid var(--border);
-
-    background: #0d1a0d;
+    background: transparent;
 
     color: white;
-
     font-size: 20px;
 
     cursor: pointer;
-
     transition: .2s;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
 .top-btn:hover {
 
-    background: #132213;
+    background: rgba(255,255,255,0.08);
 
     transform: translateY(-2px);
 
@@ -1725,7 +1718,8 @@ body {
     color: #ffffff;
 }
 
-.help-divider {
+.help-divider,
+.settings-divider {
 
     width: 100%;
 
@@ -1941,50 +1935,23 @@ body {
 
 
 .icon-btn {
+    width: clamp(34px, 3.5vw, 50px);
+    height: clamp(34px, 3.5vw, 50px);
 
+    border-radius: 12px;
+    border: none;
 
-    width: 38px;
-
-    height: 38px;
-
-
-    border-radius:
-        var(--radius-sm);
-
-
-    border:
-        1px solid var(--border);
-
-
-
-    background: rgba(10,31,15,0.82);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
+    background: transparent;
 
     color: white;
-
+    font-size: 20px;
 
     cursor: pointer;
-
+    transition: .2s;
 
     display: flex;
-
-
-    align-items: center;
-
-
     justify-content: center;
-
-
-    font-size: 16px;
-
-
-    backdrop-filter:
-        blur(6px);
-
-
-    transition: .2s;
+    align-items: center;
 }
 
 
@@ -1992,8 +1959,8 @@ body {
 .icon-btn:hover {
 
 
-    background:
-        #1f2937;
+    background: rgba(255,255,255,0.06);
+
 
 
     transform:
@@ -3213,12 +3180,6 @@ body {
     opacity: 0.65;
 }
 
-.tut-close {
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-.tut-close:hover { opacity: 1; }
-
 /* Progress bar */
 .tut-progress-track {
     width: 100%;
@@ -3293,19 +3254,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 44px;
     height: 44px;
+
     border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.06);
+    border: none;
+
+    background: transparent;
+
     color: white;
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+
+    transition: transform 0.15s;
+
     flex-shrink: 0;
 }
 
 .tut-nav-btn:hover:not(:disabled) {
-    background: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.08);
     border-color: rgba(255,255,255,0.35);
     transform: scale(1.07);
 }

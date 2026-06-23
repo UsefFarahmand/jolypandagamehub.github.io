@@ -8,7 +8,7 @@
         "settings": "assets/img/icons/setting.png",
         "help": "assets/img/icons/Help.png",
         "close": "assets/img/icons/close.png",
-        "back": "←",
+        "back": "assets/img/icons/Back.png",
         "kangaroo": "🦘",
         "queueEntry": "",
         "queueExit": "",
