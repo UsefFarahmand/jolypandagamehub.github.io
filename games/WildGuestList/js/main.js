@@ -9,6 +9,7 @@ import { PLAYER_TYPES, AI_DIFFICULTY, BOT_AVATARS } from "./constants/playerType
 import { loadIcons } from "./ui/icon-ui.js"
 import { playBackgroundMusic } from "./services/soundManager.js"
 import { initializeTutorial, openTutorial } from "./ui/tutorial-ui.js";
+import { startWalkthrough, shouldShowWalkthrough } from "./ui/walkthrough.js";
 import { loadI18n, t, setLang, buildLangSelector } from "./i18n.js";
 
 // ── i18n boot — runs before anything else ─────────────────
@@ -122,8 +123,10 @@ async function startGame() {
     updateUI(gameState);
     startTurn(gameState);
 
-    const seen = localStorage.getItem("tutorialSeen");
-    if (!seen) openTutorial(true);
+    // In-game walkthrough (first time only)
+    if (shouldShowWalkthrough()) {
+        startWalkthrough();
+    }
 }
 
 // ── Splash settings button ────────────────────────────────

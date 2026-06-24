@@ -33,6 +33,8 @@ import {
 }
 from "./queueManager.js";
 
+import { notifyCardPlayed, isWalkthroughActive } from "../ui/walkthrough.js";
+
 export function startTurn(gameState){
 
     const player =
@@ -129,6 +131,11 @@ export async function playCard(
         "logPlayed", { card: cardLabel(card) }
     )
 
+    // Notify walkthrough that a card was played (human only)
+    if (player.id === "p1" && isWalkthroughActive()) {
+        notifyCardPlayed();
+    }
+
     updateUI(gameState);
 
     await wait(100);
@@ -147,7 +154,7 @@ export async function playCard(
     // فقط اگر هنوز 5 کارت یا بیشتر در صف بود
     if(gameState.queue.length >= 5){
 
-        resolveQueue(gameState);
+        await resolveQueue(gameState);
 
         updateUI(gameState);
 
