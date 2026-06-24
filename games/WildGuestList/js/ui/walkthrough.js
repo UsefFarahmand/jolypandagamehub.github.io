@@ -22,8 +22,7 @@ let _onResolveAck  = null; // resolves when player clicks Next on step 9
 ───────────────────────────────────────── */
 
 export function shouldShowWalkthrough() {
-    // return !localStorage.getItem(STORAGE_KEY);
-    return true;
+    return !localStorage.getItem(STORAGE_KEY);
 }
 export function markWalkthroughSeen() {
     localStorage.setItem(STORAGE_KEY, "true");
