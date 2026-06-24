@@ -71,7 +71,7 @@ export function finishGame(gameState){
     addLog(
         gameState,
         winner,
-        "won the game!"
+        "logWon", {}
     );
 
     showEndGame(gameState);

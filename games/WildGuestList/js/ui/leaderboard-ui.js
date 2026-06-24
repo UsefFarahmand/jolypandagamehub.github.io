@@ -1,10 +1,11 @@
+import { t } from "../i18n.js";
+
 export function renderLeaderboard(gameState) {
 
     const sorted = [...gameState.players].sort((a, b) => {
         const ap = a.party.reduce((s, c) => s + c.power, 0);
         const bp = b.party.reduce((s, c) => s + c.power, 0);
         if (bp !== ap) return bp - ap;
-        // tiebreaker: more party cards wins
         return b.party.length - a.party.length;
     });
 
@@ -15,15 +16,14 @@ export function renderLeaderboard(gameState) {
         return `<div class="leaderboard-row" data-player="${p.id}">
             <span class="lb-rank">${medal}</span>
             <span class="lb-name">${p.name}</span>
-            <span class="lb-cards" title="Party cards">${count} 🎉</span>
-            <span class="lb-score" title="Total power">${score} ⚡</span>
+            <span class="lb-cards" title="${t("endParty")}">${count} 🎉</span>
+            <span class="lb-score" title="${t("endPower")}">${score} ⚡</span>
         </div>`;
     }).join("");
 
-    // header
     const headerHTML = `<div class="leaderboard-header">
-        <span></span><span>Player</span>
-        <span>Cards</span><span>Score</span>
+        <span></span><span>${t("endPlayer")}</span>
+        <span>${t("endParty")}</span><span>${t("endPower")}</span>
     </div>`;
 
     const desktopRows = document.getElementById("leaderboardRows");

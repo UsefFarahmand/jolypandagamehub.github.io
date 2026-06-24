@@ -3657,3 +3657,204 @@ body {
     .tut-card-emoji { font-size: 1.3rem; }
     .tut-ability-card { padding: 7px 10px; }
 }
+
+/* ══════════════════════════════════════════
+   Language Selector
+══════════════════════════════════════════ */
+
+.settings-row-col {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.lang-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.lang-btn.active {
+    background: rgba(189,93,56,0.2);
+    border-color: var(--accent, #bd5d38);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(189,93,56,0.25);
+}
+
+.lang-flag { font-size: 1rem; line-height: 1; }
+.lang-label { line-height: 1; }
+
+/* RTL global adjustments */
+[dir="rtl"] .tut-queue-row,
+[dir="rtl"] .tut-hand,
+[dir="rtl"] .tut-ability-list { direction: rtl; }
+[dir="rtl"] .tut-score-name { text-align: right; }
+[dir="rtl"] .tut-score-num  { text-align: left; }
+
+/* ══════════════════════════════════════════
+   Splash Settings Button
+══════════════════════════════════════════ */
+
+.splash-settings-btn {
+    margin-top: 10px;
+    padding: 10px 28px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.65);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.splash-settings-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* ══════════════════════════════════════════
+   Tutorial Video
+══════════════════════════════════════════ */
+
+.tut-video-wrap {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tut-video-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: rgba(189,93,56,0.15);
+    border: 1px solid rgba(189,93,56,0.35);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+    width: 100%;
+    justify-content: center;
+}
+
+.tut-video-toggle:hover {
+    background: rgba(189,93,56,0.28);
+    border-color: var(--accent, #bd5d38);
+}
+
+.tut-video-icon { font-size: 0.9rem; }
+
+.tut-video-container {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #000;
+    aspect-ratio: 16 / 9;
+}
+
+.tut-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.tut-video-container.hidden { display: none; }
+
+
+/* ══════════════════════════════════════════
+   Settings modal above splash screen
+══════════════════════════════════════════ */
+
+#settingsModal {
+    z-index: 10000;
+}
+
+#settingsModal .modal-content {
+    z-index: 10001;
+}
+
+
+/* ══════════════════════════════════════════
+   Language-specific fonts
+══════════════════════════════════════════ */
+
+:lang(fa) {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+:lang(ar) {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+:lang(tr) {
+    font-family: 'Noto Sans TR', 'Poppins', sans-serif;
+}
+
+
+/* ══════════════════════════════════════════
+   RTL: Mirror directional icons
+══════════════════════════════════════════ */
+
+[dir="rtl"] .tut-prev img,
+[dir="rtl"] .tut-next img {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .example-container .arrow {
+    transform: scaleX(-1);
+    display: inline-block;
+}
+
+/* Back button also flips in RTL */
+[dir="rtl"] #cardBackBtn img {
+    transform: scaleX(-1);
+}
+
+
+/* ══════════════════════════════════════════
+   Numbers always LTR (no digit reversal in RTL)
+══════════════════════════════════════════ */
+
+#deckCount,
+.other-deck-count,
+.slot-number,
+.card-power,
+.lb-cards,
+.lb-score,
+.party-count,
+.power-score,
+.power-badge {
+    direction: ltr;
+    unicode-bidi: isolate;
+}

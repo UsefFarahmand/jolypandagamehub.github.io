@@ -9,11 +9,17 @@ import { PLAYER_TYPES, AI_DIFFICULTY, BOT_AVATARS } from "./constants/playerType
 import { loadIcons } from "./ui/icon-ui.js"
 import { playBackgroundMusic } from "./services/soundManager.js"
 import { initializeTutorial, openTutorial } from "./ui/tutorial-ui.js";
+import { loadI18n, t, setLang, buildLangSelector } from "./i18n.js";
 
+// ── i18n boot — runs before anything else ─────────────────
+await loadI18n();
+buildLangSelector(document.getElementById("langSelector"));
+
+// ── Bot definitions (names use i18n) ──────────────────────
 const BOT_DEFS = [
-    { id: "p2", name: "Bot 1" },
-    { id: "p3", name: "Bot 2" },
-    { id: "p4", name: "Bot 3" }
+    { id: "p2", nameKey: "bot1" },
+    { id: "p3", nameKey: "bot2" },
+    { id: "p4", nameKey: "bot3" }
 ];
 
 const PLAYER_COLORS = { p1: "var(--p1)", p2: "var(--p2)", p3: "var(--p3)", p4: "var(--p4)" };
@@ -23,32 +29,37 @@ async function buildDifficultyPanel() {
     const panel = document.getElementById("difficultyPanel");
     if (!panel) return;
 
-    panel.innerHTML = BOT_DEFS.map(bot => `
-        <div class="bot-row" id="botRow_${bot.id}">
-            <<div class="bot-avatar" id="botAvatar_${bot.id}">
-                <span data-icon="bot-easy"></span>
-            </div>
-            <div class="bot-info">
-                <div class="bot-name">${bot.name}</div>
-                <div class="diff-toggle" data-bot="${bot.id}">
-                    ${["easy","medium","hard"].map(d => `
-                        <button class="diff-btn ${d === "easy" ? "active" : ""}"
-                                data-diff="${d}"
-                                data-bot="${bot.id}">
-                            ${BOT_AVATARS[d].label}
-                        </button>
-                    `).join("")}
+    function renderPanel(){
+        panel.innerHTML = BOT_DEFS.map(bot => `
+            <div class="bot-row" id="botRow_${bot.id}">
+                <div class="bot-avatar" id="botAvatar_${bot.id}">
+                    <span data-icon="bot-easy"></span>
+                </div>
+                <div class="bot-info">
+                    <div class="bot-name">${t(bot.nameKey)}</div>
+                    <div class="diff-toggle" data-bot="${bot.id}">
+                        ${["easy","medium","hard"].map(d => `
+                            <button class="diff-btn ${d === "easy" ? "active" : ""}"
+                                    data-diff="${d}"
+                                    data-bot="${bot.id}">
+                                ${t("bot" + d.charAt(0).toUpperCase() + d.slice(1))}
+                            </button>
+                        `).join("")}
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join("");
+        `).join("");
+    }
+
+    renderPanel();
+    window.addEventListener("langchange", renderPanel);
 
     // store selections
     const selected = { p2: "easy", p3: "easy", p4: "easy" };
 
     async function updateBotDisplay(botId, diff) {
         selected[botId] = diff;
-        const av = document.getElementById(`botAvatar_${botId}`);
+        const av  = document.getElementById(`botAvatar_${botId}`);
         const row = document.getElementById(`botRow_${botId}`);
         if (av) {
             av.innerHTML = `<span data-icon="bot-${diff}"></span>`;
@@ -63,30 +74,25 @@ async function buildDifficultyPanel() {
         if (!btn) return;
         const botId = btn.dataset.bot;
         const diff  = btn.dataset.diff;
-
-        // update active states
         panel.querySelectorAll(`.diff-btn[data-bot="${botId}"]`)
              .forEach(b => b.classList.toggle("active", b.dataset.diff === diff));
-
         updateBotDisplay(botId, diff);
     });
 
-    // expose selections
     panel._getSelections = () => selected;
-
-    await loadIcons(panel.innerHTML);
+    await loadIcons(panel);
 }
 
 // ── Start game ────────────────────────────────────────────
 async function startGame() {
-    const panel = document.getElementById("difficultyPanel");
+    const panel      = document.getElementById("difficultyPanel");
     const selections = panel?._getSelections?.() || { p2: "easy", p3: "easy", p4: "easy" };
 
     const players = [
-        new Player("p1", "You",   PLAYER_TYPES.HUMAN),
-        new Player("p2", "Bot 1", PLAYER_TYPES.AI, selections.p2),
-        new Player("p3", "Bot 2", PLAYER_TYPES.AI, selections.p3),
-        new Player("p4", "Bot 3", PLAYER_TYPES.AI, selections.p4),
+        new Player("p1", t("you"),   PLAYER_TYPES.HUMAN),
+        new Player("p2", t("bot1"),  PLAYER_TYPES.AI, selections.p2),
+        new Player("p3", t("bot2"),  PLAYER_TYPES.AI, selections.p3),
+        new Player("p4", t("bot3"),  PLAYER_TYPES.AI, selections.p4),
     ];
 
     gameState.players = players;
@@ -107,16 +113,23 @@ async function startGame() {
     updateUI(gameState);
     startTurn(gameState);
 
-    const seen =
-            localStorage.getItem(
-                "tutorialSeen"
-            );
-
-    if(!seen){
-
-        openTutorial(true);
-    }
+    const seen = localStorage.getItem("tutorialSeen");
+    if (!seen) openTutorial(true);
 }
+
+// ── Splash settings button ────────────────────────────────
+document.getElementById("splashSettingsBtn")?.addEventListener("click", async () => {
+    // re-build lang selector in case it wasn't inited yet
+    buildLangSelector(document.getElementById("langSelector"));
+    const modal = document.getElementById("settingsModal");
+    modal?.classList.remove("hidden");
+    await loadIcons(modal);
+});
+
+// Close settings from splash (reuse closeSettings button)
+document.getElementById("closeSettings")?.addEventListener("click", () => {
+    document.getElementById("settingsModal")?.classList.add("hidden");
+});
 
 // ── Wire up splash → difficulty panel → start ─────────────
 document.getElementById("startGameBtn")?.addEventListener("click", () => {

@@ -1,3 +1,4 @@
+import { t } from "../i18n.js";
 import { playSound } from "../services/soundManager.js";
 
 export function showEndGame(gameState) {
@@ -8,12 +9,12 @@ export function showEndGame(gameState) {
     const winner = gameState.winner;
 
     if (winner.id === "p1") {
-        title.textContent = "🎉 You Win!";
-        text.textContent  = "Your party was the strongest!";
+        title.textContent = t("endWinTitle");
+        text.textContent  = t("endWinText");
         playSound("win");
     } else {
-        title.textContent = "💀 You Lose";
-        text.textContent  = `${winner.name} dominated the party.`;
+        title.textContent = t("endLoseTitle");
+        text.textContent  = `${winner.name} ${t("endLoseText")}`;
         playSound("lose");
     }
 
@@ -26,8 +27,8 @@ export function showEndGame(gameState) {
 
     finalScores.innerHTML =
         `<div class="final-score-header">
-            <span>Rank</span><span>Player</span>
-            <span>Party</span><span>Power</span>
+            <span>${t("endRank")}</span><span>${t("endPlayer")}</span>
+            <span>${t("endParty")}</span><span>${t("endPower")}</span>
          </div>` +
         sorted.map((player, idx) => {
             const power = player.party.reduce((s, c) => s + c.power, 0);

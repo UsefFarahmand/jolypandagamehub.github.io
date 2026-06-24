@@ -11,11 +11,12 @@ export async function loadCardData() {
         cardInfo.map(card => [
             card.power,
             {
-                id:     card.power,
-                name:   card.name,
-                animal: card.emoji,
-                image:  card.image || "",
-                power:  card.power,
+                id:           card.power,
+                name:         card.name,
+                animal:       card.emoji,
+                image:        card.image || "",
+                power:        card.power,
+                translations: card.translations || {},
             }
         ])
     );

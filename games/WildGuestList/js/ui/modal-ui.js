@@ -1,3 +1,4 @@
+import { buildLangSelector } from "../i18n.js";
 import { openTutorial } from "./tutorial-ui.js"
 
 export function initializeModals(){
@@ -6,7 +7,10 @@ export function initializeModals(){
         .getElementById("settingsBtn")
         ?.addEventListener(
             "click",
-            ()=> openModal("settingsModal")
+            ()=> {
+                buildLangSelector(document.getElementById("langSelector"));
+                openModal("settingsModal");
+            }
         );
 
     document

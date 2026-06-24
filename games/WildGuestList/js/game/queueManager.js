@@ -48,19 +48,19 @@ export function resolveQueue(gameState){
     addLog(
         gameState,
         first.owner,
-        `${cardLabel(first)} entered the party`
+        "logEnteredParty", { card: cardLabel(first) }
     );
 
     addLog(
         gameState,
         second.owner,
-        `${cardLabel(second)} entered the party`
+        "logEnteredParty", { card: cardLabel(second) }
     );
 
     addLog(
         gameState,
         trash.owner,
-        `${cardLabel(trash)} was sent to trash`
+        "logSentToTrash", { card: cardLabel(trash) }
     );
 
 }

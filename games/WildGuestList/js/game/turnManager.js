@@ -48,7 +48,7 @@ export function startTurn(gameState){
         addLog(
             gameState,
             player,
-            "has no cards left"
+            "logNoCards", {}
         );
 
         nextTurn(gameState);
@@ -61,7 +61,7 @@ export function startTurn(gameState){
         addLog(
             gameState,
             player,
-            "turn"
+            "logTurn", {}
         );
 
         updateUI(gameState);
@@ -72,7 +72,7 @@ export function startTurn(gameState){
     addLog(
         gameState,
         player,
-        "turn"
+        "logTurn", {}
     );
 
     setTimeout(async ()=>{
@@ -126,7 +126,7 @@ export async function playCard(
     addLog(
         gameState,
         player,
-        `played ${cardLabel(card)}`
+        "logPlayed", { card: cardLabel(card) }
     )
 
     updateUI(gameState);

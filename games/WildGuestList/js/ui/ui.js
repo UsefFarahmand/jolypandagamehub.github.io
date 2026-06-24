@@ -26,11 +26,12 @@ from "./icon-ui.js"
 
 import { initSoundToggle } from "../services/soundManager.js"
 
-
 import {
     initializeModals
 }
 from "./modal-ui.js"
+
+let _lastGameState = null;
 
 export async function initializeUI(){
     await loadIcons();
@@ -39,9 +40,17 @@ export async function initializeUI(){
 
     initializeModals();
     initSoundToggle();
+
+    // Re-render everything when language changes
+    window.addEventListener("langchange", () => {
+        if (_lastGameState) {
+            updateUI(_lastGameState);
+        }
+    });
 }
 
 export function updateUI(gameState){
+    _lastGameState = gameState;
 
     renderGame(gameState);
 
