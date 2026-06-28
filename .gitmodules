@@ -1,0 +1,3 @@
+[submodule "games/WildGuestList"]
+	path = games/WildGuestList
+	url = https://github.com/JPS-Web-Game/Wild-Guest-List.git
